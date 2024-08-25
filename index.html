@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ground Water Level Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ground Water Level Predictor</h1>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Enter Data for Prediction</h2>
+            <form id="predictForm">
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" required>
+                
+                <label for="hydrogeology">Hydrogeology (e.g., 'Alluvial', 'Sedimentary'):</label>
+                <input type="text" id="hydrogeology" name="hydrogeology" required>
+                
+                <label for="landuse">Land Use (e.g., 'Agricultural', 'Urban'):</label>
+                <input type="text" id="landuse" name="landuse" required>
+                
+                <label for="population">Population Density:</label>
+                <input type="number" id="population" name="population" required>
+                
+                <label for="surfaceElevation">Surface Elevation (m):</label>
+                <input type="number" id="surfaceElevation" name="surfaceElevation" required>
+                
+                <label for="naturalFeatures">Natural Features (e.g., 'Rivers', 'Lakes'):</label>
+                <input type="text" id="naturalFeatures" name="naturalFeatures" required>
+                
+                <label for="tidalCycles">Tidal Cycles (e.g., 'Yes', 'No'):</label>
+                <input type="text" id="tidalCycles" name="tidalCycles" required>
+                
+                <button type="submit">Predict Ground Water Level</button>
+            </form>
+        </section>
+        
+        <section id="result">
+            <h2>Prediction Result</h2>
+            <p id="predictionOutput">Please enter data to see the prediction.</p>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
