@@ -16,65 +16,25 @@
             <h2>Enter Data for Prediction</h2>
             <form id="predictForm">
                 <label for="rainfall">Rainfall (mm):</label>
-                <select id="rainfall" name="rainfall" required>
-                    <option value="" disabled selected>Select rainfall amount</option>
-                    <option value="0-50">0-50 mm</option>
-                    <option value="51-100">51-100 mm</option>
-                    <option value="101-150">101-150 mm</option>
-                    <option value="151-200">151-200 mm</option>
-                    <option value="200+">200+ mm</option>
-                </select>
+                <select id="rainfall" name="rainfall" required></select>
                 
                 <label for="hydrogeology">Hydrogeology:</label>
-                <select id="hydrogeology" name="hydrogeology" required>
-                    <option value="" disabled selected>Select type</option>
-                    <option value="Alluvial">Alluvial</option>
-                    <option value="Sedimentary">Sedimentary</option>
-                    <option value="Metamorphic">Metamorphic</option>
-                    <option value="Igneous">Igneous</option>
-                </select>
+                <select id="hydrogeology" name="hydrogeology" required></select>
                 
                 <label for="landuse">Land Use:</label>
-                <select id="landuse" name="landuse" required>
-                    <option value="" disabled selected>Select land use</option>
-                    <option value="Agricultural">Agricultural</option>
-                    <option value="Urban">Urban</option>
-                    <option value="Forest">Forest</option>
-                    <option value="Wetland">Wetland</option>
-                </select>
+                <select id="landuse" name="landuse" required></select>
                 
                 <label for="population">Population Density:</label>
-                <select id="population" name="population" required>
-                    <option value="" disabled selected>Select population density</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
+                <select id="population" name="population" required></select>
                 
                 <label for="surfaceElevation">Surface Elevation (m):</label>
-                <select id="surfaceElevation" name="surfaceElevation" required>
-                    <option value="" disabled selected>Select elevation</option>
-                    <option value="0-50">0-50 m</option>
-                    <option value="51-100">51-100 m</option>
-                    <option value="101-200">101-200 m</option>
-                    <option value="201+">201+ m</option>
-                </select>
+                <select id="surfaceElevation" name="surfaceElevation" required></select>
                 
                 <label for="naturalFeatures">Natural Features:</label>
-                <select id="naturalFeatures" name="naturalFeatures" required>
-                    <option value="" disabled selected>Select feature</option>
-                    <option value="Rivers">Rivers</option>
-                    <option value="Lakes">Lakes</option>
-                    <option value="Mountains">Mountains</option>
-                    <option value="Plains">Plains</option>
-                </select>
+                <select id="naturalFeatures" name="naturalFeatures" required></select>
                 
                 <label for="tidalCycles">Tidal Cycles:</label>
-                <select id="tidalCycles" name="tidalCycles" required>
-                    <option value="" disabled selected>Is there a tidal cycle?</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
+                <select id="tidalCycles" name="tidalCycles" required></select>
                 
                 <button type="submit">Predict Ground Water Level</button>
             </form>
