@@ -3,6 +3,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('predictForm');
     const predictionOutput = document.getElementById('predictionOutput');
+    const jsonFile = 'data.json';
+
+    // Fetch JSON data
+    fetch(jsonFile)
+        .then(response => response.json())
+        .then(data => {
+            populateDropdown('rainfall', data.rainfallOptions);
+            populateDropdown('hydrogeology', data.hydrogeologyOptions);
+            populateDropdown('landuse', data.landUseOptions);
+            populateDropdown('population', data.populationOptions);
+            populateDropdown('surfaceElevation', data.surfaceElevationOptions);
+            populateDropdown('naturalFeatures', data.naturalFeaturesOptions);
+            populateDropdown('tidalCycles', data.tidalCyclesOptions);
+        })
+        .catch(error => console.error('Error loading JSON data:', error));
+
+    function populateDropdown(id, options) {
+        const select = document.getElementById(id);
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option;
+            opt.textContent = option;
+            select.appendChild(opt);
+        });
+    }
 
     form.addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent the default form submission
