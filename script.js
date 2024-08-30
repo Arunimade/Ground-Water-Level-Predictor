@@ -41,19 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const naturalFeatures = document.getElementById('naturalFeatures').value;
         const tidalCycles = document.getElementById('tidalCycles').value;
 
-        // Example prediction logic (customize as needed)
-        const prediction = `Based on the input data:
-        - Rainfall: ${rainfall}
-        - Hydrogeology: ${hydrogeology}
-        - Land Use: ${landuse}
-        - Population Density: ${population}
-        - Surface Elevation: ${surfaceElevation}
-        - Natural Features: ${naturalFeatures}
-        - Tidal Cycles: ${tidalCycles}
+        // Example prediction logic
+        let prediction;
+        if (rainfall === '0-50 mm' && hydrogeology === 'Alluvial' && landuse === 'Agricultural') {
+            prediction = 'Low groundwater level expected due to minimal rainfall and agricultural land use.';
+        } else if (rainfall === '200+ mm' && tidalCycles === 'Yes') {
+            prediction = 'High groundwater level expected due to excessive rainfall and tidal cycles.';
+        } else {
+            prediction = 'Groundwater level prediction requires more detailed analysis based on the provided data.';
+        }
 
-        The predicted groundwater level is: [Your Prediction Here].`;
+        // Format the result
+        const result = `
+            <strong>Based on the input data:</strong><br>
+            - <strong>Rainfall:</strong> ${rainfall}<br>
+            - <strong>Hydrogeology:</strong> ${hydrogeology}<br>
+            - <strong>Land Use:</strong> ${landuse}<br>
+            - <strong>Population Density:</strong> ${population}<br>
+            - <strong>Surface Elevation:</strong> ${surfaceElevation}<br>
+            - <strong>Natural Features:</strong> ${naturalFeatures}<br>
+            - <strong>Tidal Cycles:</strong> ${tidalCycles}<br><br>
+            <strong>The predicted groundwater level is:</strong> ${prediction}
+        `;
 
         // Display the result
-        predictionOutput.textContent = prediction;
+        predictionOutput.innerHTML = result;
     });
 });
