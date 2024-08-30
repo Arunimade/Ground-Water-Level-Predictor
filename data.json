@@ -1,0 +1,42 @@
+{
+    "rainfallOptions": [
+        "0-50 mm",
+        "51-100 mm",
+        "101-150 mm",
+        "151-200 mm",
+        "200+ mm"
+    ],
+    "hydrogeologyOptions": [
+        "Alluvial",
+        "Sedimentary",
+        "Metamorphic",
+        "Igneous"
+    ],
+    "landUseOptions": [
+        "Agricultural",
+        "Urban",
+        "Forest",
+        "Wetland"
+    ],
+    "populationOptions": [
+        "Low",
+        "Medium",
+        "High"
+    ],
+    "surfaceElevationOptions": [
+        "0-50 m",
+        "51-100 m",
+        "101-200 m",
+        "201+ m"
+    ],
+    "naturalFeaturesOptions": [
+        "Rivers",
+        "Lakes",
+        "Mountains",
+        "Plains"
+    ],
+    "tidalCyclesOptions": [
+        "Yes",
+        "No"
+    ]
+}
