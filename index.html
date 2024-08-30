@@ -16,25 +16,65 @@
             <h2>Enter Data for Prediction</h2>
             <form id="predictForm">
                 <label for="rainfall">Rainfall (mm):</label>
-                <input type="number" id="rainfall" name="rainfall" required>
+                <select id="rainfall" name="rainfall" required>
+                    <option value="" disabled selected>Select rainfall amount</option>
+                    <option value="0-50">0-50 mm</option>
+                    <option value="51-100">51-100 mm</option>
+                    <option value="101-150">101-150 mm</option>
+                    <option value="151-200">151-200 mm</option>
+                    <option value="200+">200+ mm</option>
+                </select>
                 
-                <label for="hydrogeology">Hydrogeology (e.g., 'Alluvial', 'Sedimentary'):</label>
-                <input type="text" id="hydrogeology" name="hydrogeology" required>
+                <label for="hydrogeology">Hydrogeology:</label>
+                <select id="hydrogeology" name="hydrogeology" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="Alluvial">Alluvial</option>
+                    <option value="Sedimentary">Sedimentary</option>
+                    <option value="Metamorphic">Metamorphic</option>
+                    <option value="Igneous">Igneous</option>
+                </select>
                 
-                <label for="landuse">Land Use (e.g., 'Agricultural', 'Urban'):</label>
-                <input type="text" id="landuse" name="landuse" required>
+                <label for="landuse">Land Use:</label>
+                <select id="landuse" name="landuse" required>
+                    <option value="" disabled selected>Select land use</option>
+                    <option value="Agricultural">Agricultural</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Forest">Forest</option>
+                    <option value="Wetland">Wetland</option>
+                </select>
                 
                 <label for="population">Population Density:</label>
-                <input type="number" id="population" name="population" required>
+                <select id="population" name="population" required>
+                    <option value="" disabled selected>Select population density</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
                 
                 <label for="surfaceElevation">Surface Elevation (m):</label>
-                <input type="number" id="surfaceElevation" name="surfaceElevation" required>
+                <select id="surfaceElevation" name="surfaceElevation" required>
+                    <option value="" disabled selected>Select elevation</option>
+                    <option value="0-50">0-50 m</option>
+                    <option value="51-100">51-100 m</option>
+                    <option value="101-200">101-200 m</option>
+                    <option value="201+">201+ m</option>
+                </select>
                 
-                <label for="naturalFeatures">Natural Features (e.g., 'Rivers', 'Lakes'):</label>
-                <input type="text" id="naturalFeatures" name="naturalFeatures" required>
+                <label for="naturalFeatures">Natural Features:</label>
+                <select id="naturalFeatures" name="naturalFeatures" required>
+                    <option value="" disabled selected>Select feature</option>
+                    <option value="Rivers">Rivers</option>
+                    <option value="Lakes">Lakes</option>
+                    <option value="Mountains">Mountains</option>
+                    <option value="Plains">Plains</option>
+                </select>
                 
-                <label for="tidalCycles">Tidal Cycles (e.g., 'Yes', 'No'):</label>
-                <input type="text" id="tidalCycles" name="tidalCycles" required>
+                <label for="tidalCycles">Tidal Cycles:</label>
+                <select id="tidalCycles" name="tidalCycles" required>
+                    <option value="" disabled selected>Is there a tidal cycle?</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
                 
                 <button type="submit">Predict Ground Water Level</button>
             </form>
