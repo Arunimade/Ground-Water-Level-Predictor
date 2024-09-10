@@ -1,15 +1,22 @@
-from sklearn.linear_model import LinearRegression
-import numpy as np
+# Example: Loading the saved model and scaler for predictions
+
 import pickle
+import numpy as np
 
-# Example training data
-X_train = np.array([[100, 500, 50], [200, 600, 60], [150, 550, 55]])
-y_train = np.array([10, 20, 15])
+# Load the model and scaler
+with open('model.pkl', 'rb') as model_file:
+    loaded_model = pickle.load(model_file)
 
-# Train a simple model
-model = LinearRegression()
-model.fit(X_train, y_train)
+with open('scaler.pkl', 'rb') as scaler_file:
+    loaded_scaler = pickle.load(scaler_file)
 
-# Save the model
-with open('model.pkl', 'wb') as model_file:
-    pickle.dump(model, model_file)
+# New data point (replace with real input)
+new_data = np.array([[1, 1, 1, 1, 1, 1, 1]])
+
+# Apply the same scaling to the new data
+new_data_scaled = loaded_scaler.transform(new_data)
+
+# Make a prediction
+predicted_groundwater_level = loaded_model.predict(new_data_scaled)
+
+print(f"Predicted Groundwater Level: {predicted_groundwater_level}")
