@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the default form submission
+        event.preventDefault(); // Prevent default form submission
 
         // Get form data
         const rainfall = document.getElementById('rainfall').value;
@@ -41,30 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const naturalFeatures = document.getElementById('naturalFeatures').value;
         const tidalCycles = document.getElementById('tidalCycles').value;
 
-        // Example prediction logic
-        let prediction;
-        if (rainfall === '0-50 mm' && hydrogeology === 'Alluvial' && landuse === 'Agricultural') {
-            prediction = 'Low groundwater level expected due to minimal rainfall and agricultural land use.';
-        } else if (rainfall === '200+ mm' && tidalCycles === 'Yes') {
-            prediction = 'High groundwater level expected due to excessive rainfall and tidal cycles.';
-        } else {
-            prediction = 'Groundwater level prediction requires more detailed analysis based on the provided data.';
-        }
+        // Create data object to send to the server
+        const inputData = {
+            rainfall: rainfall,
+            hydrogeology: hydrogeology,
+            landuse: landuse,
+            population: population,
+            surfaceElevation: surfaceElevation,
+            naturalFeatures: naturalFeatures,
+            tidalCycles: tidalCycles
+        };
 
-        // Format the result
-        const result = `
-            <strong>Based on the input data:</strong><br>
-            - <strong>Rainfall:</strong> ${rainfall}<br>
-            - <strong>Hydrogeology:</strong> ${hydrogeology}<br>
-            - <strong>Land Use:</strong> ${landuse}<br>
-            - <strong>Population Density:</strong> ${population}<br>
-            - <strong>Surface Elevation:</strong> ${surfaceElevation}<br>
-            - <strong>Natural Features:</strong> ${naturalFeatures}<br>
-            - <strong>Tidal Cycles:</strong> ${tidalCycles}<br><br>
-            <strong>The predicted groundwater level is:</strong> ${prediction}
-        `;
-
-        // Display the result
-        predictionOutput.innerHTML = result;
+        // Send a POST request to the Flask server
+        fetch('http://localhost:5000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the prediction result
+            const result = `
+                <strong>Based on the input data:</strong><br>
+                - <strong>Rainfall:</strong> ${rainfall}<br>
+                - <strong>Hydrogeology:</strong> ${hydrogeology}<br>
+                - <strong>Land Use:</strong> ${landuse}<br>
+                - <strong>Population Density:</strong> ${population}<br>
+                - <strong>Surface Elevation:</strong> ${surfaceElevation}<br>
+                - <strong>Natural Features:</strong> ${naturalFeatures}<br>
+                - <strong>Tidal Cycles:</strong> ${tidalCycles}<br><br>
+                <strong>The predicted groundwater level is:</strong> ${data.prediction}
+            `;
+            predictionOutput.innerHTML = result;
+        })
+        .catch(error => console.error('Error:', error));
     });
 });
