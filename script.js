@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('predictForm');
     const predictionOutput = document.getElementById('predictionOutput');
@@ -52,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Format the result
-        const result = 
+        const result = `
             <strong>Based on the input data:</strong><br>
             - <strong>Rainfall:</strong> ${rainfall}<br>
             - <strong>Hydrogeology:</strong> ${hydrogeology}<br>
@@ -62,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
             - <strong>Natural Features:</strong> ${naturalFeatures}<br>
             - <strong>Tidal Cycles:</strong> ${tidalCycles}<br><br>
             <strong>The predicted groundwater level is:</strong> ${prediction}
-        ;
+        `;
 
         // Display the result
         predictionOutput.innerHTML = result;
     });
-}); 
+});
