@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaPredict — Groundwater Level Predictor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background decorative blobs -->
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
+  <div class="bg-blob blob3"></div>
+
+  <div class="app-wrapper">
+
+    <!-- ── HEADER ── -->
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8 8 4 11 4 15a8 8 0 0016 0c0-4-4-7-8-13z" fill="#2563eb" opacity=".9"/>
+            <path d="M12 8c-2 3-4 5-4 7a4 4 0 008 0c0-2-2-4-4-7z" fill="#93c5fd"/>
+          </svg>
+        </div>
+        <span class="logo-text">AquaPredict</span>
+      </div>
+      <div class="header-badge">Hydrogeological Analysis Engine v2.0</div>
+    </header>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="hero-tag">Scientific Groundwater Modeling</div>
+      <h1 class="hero-title">Groundwater <em>Level</em> Predictor</h1>
+      <p class="hero-sub">Multi-factor parametric analysis using hydrogeological science, seasonal recharge modeling, and anthropogenic stress indicators to estimate depth to water table.</p>
+    </section>
+
+    <!-- ── FORM ── -->
+    <form id="predictForm" onsubmit="return false;">
+
+      <!-- Section 1 -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-num">01</div>
+          <div>
+            <div class="section-title">Location & Climate</div>
+            <div class="section-desc">Regional environmental parameters</div>
+          </div>
+        </div>
+        <div class="fields-grid">
+
+          <div class="field-group">
+            <label for="rainfall">Annual Rainfall <span class="unit">(mm/yr)</span></label>
+            <div class="range-wrap">
+              <input type="range" id="rainfall" min="50" max="3000" value="800" step="10" class="slider">
+              <div class="range-meta">
+                <span class="range-min">50</span>
+                <span class="range-val" id="rainfallVal">800 mm</span>
+                <span class="range-max">3000</span>
+              </div>
+            </div>
+            <p class="field-hint">Higher rainfall → shallower water table</p>
+          </div>
+
+          <div class="field-group">
+            <label for="elevation">Surface Elevation <span class="unit">(m asl)</span></label>
+            <div class="range-wrap">
+              <input type="range" id="elevation" min="0" max="3000" value="100" step="5" class="slider">
+              <div class="range-meta">
+                <span class="range-min">0</span>
+                <span class="range-val" id="elevationVal">100 m</span>
+                <span class="range-max">3000</span>
+              </div>
+            </div>
+            <p class="field-hint">Meters above mean sea level</p>
+          </div>
+
+          <div class="field-group">
+            <label for="season">Season / Tidal Cycle</label>
+            <div class="select-wrap">
+              <select id="season">
+                <option value="monsoon">Monsoon / Wet Season</option>
+                <option value="post_monsoon">Post-Monsoon</option>
+                <option value="dry">Dry / Summer Season</option>
+                <option value="pre_monsoon">Pre-Monsoon (Critical)</option>
+                <option value="coastal_high">Coastal — High Tide</option>
+                <option value="coastal_low">Coastal — Low Tide</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="climate">Climate Zone</label>
+            <div class="select-wrap">
+              <select id="climate">
+                <option value="humid_tropical">Humid Tropical</option>
+                <option value="semi_arid">Semi-Arid</option>
+                <option value="arid">Arid / Desert</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="temperate">Temperate</option>
+                <option value="continental">Continental</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-num">02</div>
+          <div>
+            <div class="section-title">Hydrogeology & Aquifer</div>
+            <div class="section-desc">Subsurface geological characteristics</div>
+          </div>
+        </div>
+        <div class="fields-grid">
+
+          <div class="field-group">
+            <label for="geology">Aquifer / Rock Type</label>
+            <div class="select-wrap">
+              <select id="geology">
+                <option value="alluvial">Alluvial / Unconsolidated</option>
+                <option value="sandstone">Sandstone (high porosity)</option>
+                <option value="limestone">Limestone / Karst</option>
+                <option value="basalt">Basalt / Fractured Volcanic</option>
+                <option value="granite">Granite / Hard Rock</option>
+                <option value="clay">Clay (confining layer)</option>
+                <option value="laterite">Laterite</option>
+                <option value="shale">Shale (low permeability)</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="confinement">Aquifer Confinement</label>
+            <div class="select-wrap">
+              <select id="confinement">
+                <option value="unconfined">Unconfined (water table)</option>
+                <option value="semiconfined">Semi-Confined</option>
+                <option value="confined">Confined (artesian)</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="permeability">Soil Permeability</label>
+            <div class="select-wrap">
+              <select id="permeability">
+                <option value="high">High — sand / gravel</option>
+                <option value="moderate">Moderate — sandy loam</option>
+                <option value="low">Low — silt / clay mix</option>
+                <option value="very_low">Very Low — heavy clay</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="bedrock">Depth to Bedrock <span class="unit">(m)</span></label>
+            <div class="range-wrap">
+              <input type="range" id="bedrock" min="1" max="200" value="30" step="1" class="slider">
+              <div class="range-meta">
+                <span class="range-min">1</span>
+                <span class="range-val" id="bedrockVal">30 m</span>
+                <span class="range-max">200</span>
+              </div>
+            </div>
+            <p class="field-hint">Caps maximum water table depth</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-num">03</div>
+          <div>
+            <div class="section-title">Land Use & Anthropogenic Stress</div>
+            <div class="section-desc">Human activity and surface cover impacts</div>
+          </div>
+        </div>
+        <div class="fields-grid">
+
+          <div class="field-group">
+            <label for="landuse">Primary Land Use</label>
+            <div class="select-wrap">
+              <select id="landuse">
+                <option value="forest">Dense Forest / Wetland</option>
+                <option value="agriculture_irr">Irrigated Agriculture</option>
+                <option value="agriculture_rain">Rainfed Agriculture</option>
+                <option value="urban_dense">Dense Urban</option>
+                <option value="urban_mixed">Mixed Urban / Suburban</option>
+                <option value="industrial">Industrial Zone</option>
+                <option value="wasteland">Wasteland / Scrub</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="population">Population Density <span class="unit">(people/km²)</span></label>
+            <div class="range-wrap">
+              <input type="range" id="population" min="1" max="20000" value="500" step="50" class="slider">
+              <div class="range-meta">
+                <span class="range-min">1</span>
+                <span class="range-val" id="populationVal">500</span>
+                <span class="range-max">20k</span>
+              </div>
+            </div>
+            <p class="field-hint">Higher density increases extraction stress</p>
+          </div>
+
+          <div class="field-group">
+            <label for="natural">Nearby Natural Features</label>
+            <div class="select-wrap">
+              <select id="natural">
+                <option value="river_proximate">River / Stream (&lt;1 km)</option>
+                <option value="lake">Lake / Reservoir nearby</option>
+                <option value="wetland">Wetland / Floodplain</option>
+                <option value="mountain">Hill / Mountain recharge</option>
+                <option value="coastal">Coastal / Estuarine</option>
+                <option value="none">No significant feature</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="extraction">Groundwater Extraction Level</label>
+            <div class="select-wrap">
+              <select id="extraction">
+                <option value="none">None / Minimal</option>
+                <option value="domestic">Domestic Use Only</option>
+                <option value="moderate">Moderate (agriculture)</option>
+                <option value="heavy">Heavy (industrial / multi-use)</option>
+                <option value="over">Over-extraction (stressed)</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button type="submit" class="predict-btn" id="predictBtn" onclick="runPrediction()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        Analyze Groundwater Level
+      </button>
+
+    </form>
+
+    <!-- ── RESULTS ── -->
+    <section class="results" id="results">
+
+      <div class="results-header">
+        <h2 class="results-title">Analysis Results</h2>
+        <span class="conf-badge" id="confBadge"></span>
+      </div>
+
+      <!-- Main depth display -->
+      <div class="depth-hero">
+        <div class="depth-card">
+          <div class="depth-label">Estimated Depth to Water Table</div>
+          <div class="depth-value-row">
+            <span class="depth-num" id="depthNum">—</span>
+            <span class="depth-unit">meters below ground surface</span>
+          </div>
+          <div class="depth-bar-track">
+            <div class="depth-bar-fill" id="depthBarFill"></div>
+          </div>
+          <div class="depth-caption" id="depthCaption"></div>
+        </div>
+
+        <!-- Cross-section visualizer -->
+        <div class="cross-section" id="crossSection">
+          <div class="cs-label-top">Ground Surface (0 m)</div>
+          <div class="cs-soil" id="csSoil">
+            <div class="cs-soil-texture"></div>
+            <div class="cs-depth-line" id="csDepthLine">
+              <span class="cs-depth-label" id="csDepthLabel">—</span>
+            </div>
+          </div>
+          <div class="cs-water" id="csWater">
+            <div class="cs-wave"></div>
+            <div class="cs-water-label">Saturated Zone</div>
+          </div>
+          <div class="cs-bedrock" id="csBedrock">
+            <div class="cs-bedrock-label">Bedrock</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Index gauges -->
+      <div class="gauge-row">
+        <div class="gauge-card">
+          <div class="gauge-icon" style="background:#dbeafe;color:#1d4ed8">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 8 4 11 4 15a8 8 0 0016 0c0-4-4-7-8-13z" fill="currentColor" opacity=".7"/></svg>
+          </div>
+          <div class="gauge-info">
+            <div class="gauge-name">Recharge Potential</div>
+            <div class="gauge-bar-wrap"><div class="gauge-bar-fill" id="gRecharge" style="--clr:#2563eb"></div></div>
+            <div class="gauge-pct" id="gRechargePct">—</div>
+          </div>
+        </div>
+        <div class="gauge-card">
+          <div class="gauge-icon" style="background:#d1fae5;color:#065f46">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor" opacity=".6"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="gauge-info">
+            <div class="gauge-name">Aquifer Productivity</div>
+            <div class="gauge-bar-wrap"><div class="gauge-bar-fill" id="gProd" style="--clr:#059669"></div></div>
+            <div class="gauge-pct" id="gProdPct">—</div>
+          </div>
+        </div>
+        <div class="gauge-card">
+          <div class="gauge-icon" style="background:#fef3c7;color:#92400e">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" opacity=".7"/></svg>
+          </div>
+          <div class="gauge-info">
+            <div class="gauge-name">Sustainability Index</div>
+            <div class="gauge-bar-wrap"><div class="gauge-bar-fill" id="gSust" style="--clr:#d97706"></div></div>
+            <div class="gauge-pct" id="gSustPct">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis grid -->
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <div class="ac-icon">📅</div>
+          <div class="ac-label">Seasonal Trend</div>
+          <div class="ac-val" id="aTrend">—</div>
+        </div>
+        <div class="analysis-card">
+          <div class="ac-icon">🪨</div>
+          <div class="ac-label">Aquifer Classification</div>
+          <div class="ac-val" id="aType">—</div>
+        </div>
+        <div class="analysis-card">
+          <div class="ac-icon">💧</div>
+          <div class="ac-label">Annual Recharge Rate</div>
+          <div class="ac-val" id="aRecharge">—</div>
+        </div>
+        <div class="analysis-card">
+          <div class="ac-icon">⚡</div>
+          <div class="ac-label">Extraction Risk Level</div>
+          <div class="ac-val" id="aRisk">—</div>
+        </div>
+      </div>
+
+      <!-- Alert strip -->
+      <div class="alert-strip" id="alertStrip">
+        <div class="alert-icon" id="alertIcon"></div>
+        <div class="alert-body">
+          <div class="alert-title" id="alertTitle"></div>
+          <div class="alert-desc" id="alertDesc"></div>
+        </div>
+      </div>
+
+      <!-- Factor influence -->
+      <div class="factors-panel">
+        <div class="factors-title">Factor Influence Analysis</div>
+        <div id="factorBars"></div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="recs-panel" id="recsPanel"></div>
+
+    </section>
+
+    <footer class="site-footer">
+      <p>AquaPredict uses parametric hydrogeological modeling. Results are indicative estimates — consult a licensed hydrogeologist for site-specific assessments.</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
